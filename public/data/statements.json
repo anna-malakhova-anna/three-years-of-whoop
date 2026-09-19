@@ -1,0 +1,710 @@
+{
+  "statements": [
+    {
+      "id": "sleep_hours_<=5h",
+      "factor": "sleep_hours",
+      "trigger": {
+        "bin": "<=5h"
+      },
+      "confidence": "low",
+      "n": 2,
+      "text": "In the <=5h hour range, HRV averages 26.0 ms and recovery 4.5% \u2014 but that's only 2 days, so hold this loosely.",
+      "values": {
+        "hrv": 26.0,
+        "recovery": 4.5,
+        "pct_ge_80": 0.0,
+        "n": 2
+      }
+    },
+    {
+      "id": "sleep_hours_5-6h",
+      "factor": "sleep_hours",
+      "trigger": {
+        "bin": "5-6h"
+      },
+      "confidence": "low",
+      "n": 4,
+      "text": "In the 5-6h hour range, HRV averages 108.2 ms and recovery 53.8% \u2014 but that's only 4 days, so hold this loosely.",
+      "values": {
+        "hrv": 108.2,
+        "recovery": 53.8,
+        "pct_ge_80": 0.0,
+        "n": 4
+      }
+    },
+    {
+      "id": "sleep_hours_6-6.5h",
+      "factor": "sleep_hours",
+      "trigger": {
+        "bin": "6-6.5h"
+      },
+      "confidence": "low",
+      "n": 6,
+      "text": "In the 6-6.5h hour range, HRV averages 129.2 ms and recovery 73.0% \u2014 but that's only 6 days, so hold this loosely.",
+      "values": {
+        "hrv": 129.2,
+        "recovery": 73.0,
+        "pct_ge_80": 33.3,
+        "n": 6
+      }
+    },
+    {
+      "id": "sleep_hours_6.5-7h",
+      "factor": "sleep_hours",
+      "trigger": {
+        "bin": "6.5-7h"
+      },
+      "confidence": "low",
+      "n": 21,
+      "text": "In the 6.5-7h hour range, HRV averages 128.3 ms and recovery 71.8%, with 38.1% of those days hitting 80+ recovery (n=21).",
+      "values": {
+        "hrv": 128.3,
+        "recovery": 71.8,
+        "pct_ge_80": 38.1,
+        "n": 21
+      }
+    },
+    {
+      "id": "sleep_hours_7-7.5h",
+      "factor": "sleep_hours",
+      "trigger": {
+        "bin": "7-7.5h"
+      },
+      "confidence": "medium",
+      "n": 47,
+      "text": "In the 7-7.5h hour range, HRV averages 124.6 ms and recovery 72.3%, with 38.3% of those days hitting 80+ recovery (n=47).",
+      "values": {
+        "hrv": 124.6,
+        "recovery": 72.3,
+        "pct_ge_80": 38.3,
+        "n": 47
+      }
+    },
+    {
+      "id": "sleep_hours_7.5-8h",
+      "factor": "sleep_hours",
+      "trigger": {
+        "bin": "7.5-8h"
+      },
+      "confidence": "high",
+      "n": 100,
+      "text": "In the 7.5-8h hour range, HRV averages 128.1 ms and recovery 72.9%, with 43.0% of those days hitting 80+ recovery (n=100).",
+      "values": {
+        "hrv": 128.1,
+        "recovery": 72.9,
+        "pct_ge_80": 43.0,
+        "n": 100
+      }
+    },
+    {
+      "id": "sleep_hours_8-8.5h",
+      "factor": "sleep_hours",
+      "trigger": {
+        "bin": "8-8.5h"
+      },
+      "confidence": "medium",
+      "n": 94,
+      "text": "In the 8-8.5h hour range, HRV averages 130.9 ms and recovery 76.5%, with 48.9% of those days hitting 80+ recovery (n=94).",
+      "values": {
+        "hrv": 130.9,
+        "recovery": 76.5,
+        "pct_ge_80": 48.9,
+        "n": 94
+      }
+    },
+    {
+      "id": "sleep_hours_8.5-9h",
+      "factor": "sleep_hours",
+      "trigger": {
+        "bin": "8.5-9h"
+      },
+      "confidence": "medium",
+      "n": 52,
+      "text": "In the 8.5-9h hour range, HRV averages 128.7 ms and recovery 75.4%, with 48.1% of those days hitting 80+ recovery (n=52).",
+      "values": {
+        "hrv": 128.7,
+        "recovery": 75.4,
+        "pct_ge_80": 48.1,
+        "n": 52
+      }
+    },
+    {
+      "id": "sleep_hours_9h+",
+      "factor": "sleep_hours",
+      "trigger": {
+        "bin": "9h+"
+      },
+      "confidence": "medium",
+      "n": 60,
+      "text": "In the 9h+ hour range, HRV averages 127.0 ms and recovery 72.7%, with 46.7% of those days hitting 80+ recovery (n=60).",
+      "values": {
+        "hrv": 127.0,
+        "recovery": 72.7,
+        "pct_ge_80": 46.7,
+        "n": 60
+      }
+    },
+    {
+      "id": "sleep_hours_best_band",
+      "factor": "sleep_hours",
+      "trigger": {
+        "best_band": true
+      },
+      "confidence": "medium",
+      "n": 94,
+      "text": "Her best-recovery sleep band is 8-8.5h \u2014 HRV 130.9 ms, recovery 76.5%, 48.9% of days at 80+ (n=94). More sleep past this band doesn't add HRV \u2014 it's a plateau, not a penalty.",
+      "values": {
+        "bin": "8-8.5h",
+        "n": 94,
+        "mean_hrv": 130.9,
+        "mean_recovery": 76.5,
+        "pct_recovery_ge_80": 48.9
+      }
+    },
+    {
+      "id": "resp_rate_<=15.0",
+      "factor": "resp_rate",
+      "trigger": {
+        "bin": "<=15.0"
+      },
+      "confidence": "low",
+      "n": 24,
+      "text": "In the <=15.0 rpm range, HRV averages 148.7 ms and recovery 78.8%, with 50.0% of those days hitting 80+ recovery (n=24).",
+      "values": {
+        "hrv": 148.7,
+        "recovery": 78.8,
+        "pct_ge_80": 50.0,
+        "n": 24
+      }
+    },
+    {
+      "id": "resp_rate_15-15.5",
+      "factor": "resp_rate",
+      "trigger": {
+        "bin": "15-15.5"
+      },
+      "confidence": "medium",
+      "n": 63,
+      "text": "In the 15-15.5 rpm range, HRV averages 127.7 ms and recovery 73.8%, with 46.0% of those days hitting 80+ recovery (n=63).",
+      "values": {
+        "hrv": 127.7,
+        "recovery": 73.8,
+        "pct_ge_80": 46.0,
+        "n": 63
+      }
+    },
+    {
+      "id": "resp_rate_15.5-16",
+      "factor": "resp_rate",
+      "trigger": {
+        "bin": "15.5-16"
+      },
+      "confidence": "high",
+      "n": 144,
+      "text": "In the 15.5-16 rpm range, HRV averages 128.2 ms and recovery 75.1%, with 46.5% of those days hitting 80+ recovery (n=144).",
+      "values": {
+        "hrv": 128.2,
+        "recovery": 75.1,
+        "pct_ge_80": 46.5,
+        "n": 144
+      }
+    },
+    {
+      "id": "resp_rate_16-17",
+      "factor": "resp_rate",
+      "trigger": {
+        "bin": "16-17"
+      },
+      "confidence": "high",
+      "n": 149,
+      "text": "In the 16-17 rpm range, HRV averages 125.1 ms and recovery 71.9%, with 40.3% of those days hitting 80+ recovery (n=149).",
+      "values": {
+        "hrv": 125.1,
+        "recovery": 71.9,
+        "pct_ge_80": 40.3,
+        "n": 149
+      }
+    },
+    {
+      "id": "resp_rate_>17",
+      "factor": "resp_rate",
+      "trigger": {
+        "bin": ">17"
+      },
+      "confidence": "low",
+      "n": 6,
+      "text": "In the >17 rpm range, HRV averages 87.2 ms and recovery 45.5% \u2014 but that's only 6 days, so hold this loosely.",
+      "values": {
+        "hrv": 87.2,
+        "recovery": 45.5,
+        "pct_ge_80": 33.3,
+        "n": 6
+      }
+    },
+    {
+      "id": "prior_day_strain_0-6",
+      "factor": "prior_day_strain",
+      "trigger": {
+        "bin": "0-6"
+      },
+      "confidence": "low",
+      "n": 60,
+      "text": "In the 0-6 strain range, HRV averages 126.5 ms and recovery 74.8% \u2014 but that's only 60 days, so hold this loosely.",
+      "values": {
+        "hrv": 126.5,
+        "recovery": 74.8,
+        "pct_ge_80": 46.7,
+        "n": 60
+      }
+    },
+    {
+      "id": "prior_day_strain_6-9",
+      "factor": "prior_day_strain",
+      "trigger": {
+        "bin": "6-9"
+      },
+      "confidence": "low",
+      "n": 68,
+      "text": "In the 6-9 strain range, HRV averages 125.4 ms and recovery 74.2% \u2014 but that's only 68 days, so hold this loosely.",
+      "values": {
+        "hrv": 125.4,
+        "recovery": 74.2,
+        "pct_ge_80": 36.8,
+        "n": 68
+      }
+    },
+    {
+      "id": "prior_day_strain_9-12",
+      "factor": "prior_day_strain",
+      "trigger": {
+        "bin": "9-12"
+      },
+      "confidence": "low",
+      "n": 46,
+      "text": "In the 9-12 strain range, HRV averages 135.5 ms and recovery 75.8% \u2014 but that's only 46 days, so hold this loosely.",
+      "values": {
+        "hrv": 135.5,
+        "recovery": 75.8,
+        "pct_ge_80": 58.7,
+        "n": 46
+      }
+    },
+    {
+      "id": "prior_day_strain_12-15",
+      "factor": "prior_day_strain",
+      "trigger": {
+        "bin": "12-15"
+      },
+      "confidence": "low",
+      "n": 107,
+      "text": "In the 12-15 strain range, HRV averages 127.6 ms and recovery 73.3% \u2014 but that's only 107 days, so hold this loosely.",
+      "values": {
+        "hrv": 127.6,
+        "recovery": 73.3,
+        "pct_ge_80": 43.0,
+        "n": 107
+      }
+    },
+    {
+      "id": "prior_day_strain_15+",
+      "factor": "prior_day_strain",
+      "trigger": {
+        "bin": "15+"
+      },
+      "confidence": "low",
+      "n": 107,
+      "text": "In the 15+ strain range, HRV averages 126.0 ms and recovery 71.2% \u2014 but that's only 107 days, so hold this loosely.",
+      "values": {
+        "hrv": 126.0,
+        "recovery": 71.2,
+        "pct_ge_80": 41.1,
+        "n": 107
+      }
+    },
+    {
+      "id": "sleep_consistency_pct_<50",
+      "factor": "sleep_consistency_pct",
+      "trigger": {
+        "bin": "<50"
+      },
+      "confidence": "low",
+      "n": 30,
+      "text": "In the <50 % range, HRV averages 129.3 ms and recovery 76.0% \u2014 but that's only 30 days, so hold this loosely.",
+      "values": {
+        "hrv": 129.3,
+        "recovery": 76.0,
+        "pct_ge_80": 46.7,
+        "n": 30
+      }
+    },
+    {
+      "id": "sleep_consistency_pct_50-60",
+      "factor": "sleep_consistency_pct",
+      "trigger": {
+        "bin": "50-60"
+      },
+      "confidence": "low",
+      "n": 37,
+      "text": "In the 50-60 % range, HRV averages 134.6 ms and recovery 77.9% \u2014 but that's only 37 days, so hold this loosely.",
+      "values": {
+        "hrv": 134.6,
+        "recovery": 77.9,
+        "pct_ge_80": 54.1,
+        "n": 37
+      }
+    },
+    {
+      "id": "sleep_consistency_pct_60-70",
+      "factor": "sleep_consistency_pct",
+      "trigger": {
+        "bin": "60-70"
+      },
+      "confidence": "low",
+      "n": 69,
+      "text": "In the 60-70 % range, HRV averages 128.5 ms and recovery 73.3% \u2014 but that's only 69 days, so hold this loosely.",
+      "values": {
+        "hrv": 128.5,
+        "recovery": 73.3,
+        "pct_ge_80": 44.9,
+        "n": 69
+      }
+    },
+    {
+      "id": "sleep_consistency_pct_70-80",
+      "factor": "sleep_consistency_pct",
+      "trigger": {
+        "bin": "70-80"
+      },
+      "confidence": "low",
+      "n": 111,
+      "text": "In the 70-80 % range, HRV averages 126.0 ms and recovery 71.4% \u2014 but that's only 111 days, so hold this loosely.",
+      "values": {
+        "hrv": 126.0,
+        "recovery": 71.4,
+        "pct_ge_80": 45.9,
+        "n": 111
+      }
+    },
+    {
+      "id": "sleep_consistency_pct_80-90",
+      "factor": "sleep_consistency_pct",
+      "trigger": {
+        "bin": "80-90"
+      },
+      "confidence": "low",
+      "n": 112,
+      "text": "In the 80-90 % range, HRV averages 126.7 ms and recovery 73.5% \u2014 but that's only 112 days, so hold this loosely.",
+      "values": {
+        "hrv": 126.7,
+        "recovery": 73.5,
+        "pct_ge_80": 39.3,
+        "n": 112
+      }
+    },
+    {
+      "id": "sleep_consistency_pct_90-100",
+      "factor": "sleep_consistency_pct",
+      "trigger": {
+        "bin": "90-100"
+      },
+      "confidence": "low",
+      "n": 12,
+      "text": "In the 90-100 % range, HRV averages 133.2 ms and recovery 77.2% \u2014 but that's only 12 days, so hold this loosely.",
+      "values": {
+        "hrv": 133.2,
+        "recovery": 77.2,
+        "pct_ge_80": 50.0,
+        "n": 12
+      }
+    },
+    {
+      "id": "alcohol_on",
+      "factor": "alcohol",
+      "trigger": {
+        "value": true
+      },
+      "confidence": "high",
+      "n": 119,
+      "text": "On nights with alcohol, HRV averages 88.3 ms vs 127.6 ms sober \u2014 a difference of 39.3 ms (Cohen's d = -1.47, n=119 vs 386).",
+      "values": {
+        "hrv_alcohol": 88.3,
+        "n_alcohol": 119,
+        "hrv_sober": 127.6,
+        "n_sober": 386,
+        "cohens_d": -1.47,
+        "p": 1.303305069131725e-28
+      }
+    },
+    {
+      "id": "alcohol_off",
+      "factor": "alcohol",
+      "trigger": {
+        "value": false
+      },
+      "confidence": "high",
+      "n": 386,
+      "text": "Sober nights: HRV averages 127.6 ms (n=386) \u2014 her baseline before any other factor moves.",
+      "values": {
+        "hrv_alcohol": 88.3,
+        "n_alcohol": 119,
+        "hrv_sober": 127.6,
+        "n_sober": 386,
+        "cohens_d": -1.47,
+        "p": 1.303305069131725e-28
+      }
+    },
+    {
+      "id": "alcohol_next_day",
+      "factor": "alcohol",
+      "trigger": {
+        "value": true,
+        "context": "next_day"
+      },
+      "confidence": "medium",
+      "n": 119,
+      "text": "The cost is one night, not a weekend: recovery drops to 46.8% the morning after (only 8.4% of those mornings hit 80+), then is back near baseline by the next morning (68.1%, 39.8% at 80+).",
+      "values": {
+        "day0": {
+          "day": 0,
+          "n": 119,
+          "mean_recovery": 46.8,
+          "mean_hrv": 88.3,
+          "pct_ge_80": 8.4
+        },
+        "day1": {
+          "day": 1,
+          "n": 88,
+          "mean_recovery": 68.1,
+          "mean_hrv": 116.9,
+          "pct_ge_80": 39.8
+        }
+      }
+    },
+    {
+      "id": "alcohol_high_hrv_days",
+      "factor": "alcohol",
+      "trigger": {
+        "context": "quartile"
+      },
+      "confidence": "high",
+      "n": 134,
+      "text": "7 of her 210 best-HRV days followed a drink, versus 78 of her 209 worst-HRV days.",
+      "values": {
+        "high_hrv_threshold": 139.0,
+        "low_hrv_threshold": 98.0,
+        "high": {
+          "n": 210,
+          "sleep_hours": 8.2,
+          "resp_rate": 15.7,
+          "sleep_consistency_pct": 71.1,
+          "alcohol_n": 7,
+          "alcohol_known_n": 134
+        },
+        "low": {
+          "n": 209,
+          "sleep_hours": 7.7,
+          "resp_rate": 16.1,
+          "sleep_consistency_pct": 67.5,
+          "alcohol_n": 78,
+          "alcohol_known_n": 123
+        }
+      }
+    },
+    {
+      "id": "alcohol_recovery_base_rate",
+      "factor": "alcohol",
+      "trigger": {
+        "context": "base_rate"
+      },
+      "confidence": "high",
+      "n": 388,
+      "text": "80+ recovery isn't a baseline she returns to \u2014 it happens on 43.8% of sober days and 36.4% of all days. Reaching it after a drink takes a median of 2 days simply because that's how many rolls of the die it takes on a good week (23.1% never get there within 5 days).",
+      "values": {
+        "threshold_value": 80,
+        "median_days": 2,
+        "pct_never_within_5_days": 23.1,
+        "n_events": 121
+      }
+    },
+    {
+      "id": "model_ceiling",
+      "factor": "meta",
+      "trigger": {
+        "always": true
+      },
+      "confidence": "high",
+      "n": 775,
+      "text": "This model explains 26% of day-to-day HRV variance (R\u00b2=0.258, n=775). The rest is unmeasured \u2014 stress, illness, travel, things this export doesn't capture.",
+      "values": {
+        "r_squared": 0.258,
+        "n": 775
+      }
+    },
+    {
+      "id": "rem_no_relationship",
+      "factor": "meta",
+      "trigger": {
+        "always": true
+      },
+      "confidence": "high",
+      "n": 799,
+      "text": "REM sleep has no detectable relationship with her HRV (r=-0.052, p=0.14) \u2014 despite what sleep-tracker marketing implies.",
+      "values": {
+        "variable": "rem_sleep_hours",
+        "label": "REM hours",
+        "verdict": "no_relationship",
+        "why": "No detectable relationship with HRV, despite tracker marketing implying otherwise.",
+        "r": -0.052,
+        "p": 0.14452779599980953,
+        "n": 799
+      }
+    },
+    {
+      "id": "deep_sleep_inverse",
+      "factor": "meta",
+      "trigger": {
+        "always": true
+      },
+      "confidence": "high",
+      "n": 799,
+      "text": "Deep sleep correlates negatively with HRV (r=-0.191) \u2014 almost certainly rebound SWS after alcohol or hard strain, not a cause of lower HRV.",
+      "values": {
+        "variable": "deep_sleep_hours",
+        "label": "Deep (SWS) hours",
+        "verdict": "counterintuitive",
+        "why": "Negative correlation \u2014 almost certainly reverse causation (rebound deep sleep after alcohol/strain), not a cause of low HRV.",
+        "r": -0.191,
+        "p": 5.758885613560058e-08,
+        "n": 799
+      }
+    },
+    {
+      "id": "workout_next_day",
+      "factor": "workout",
+      "trigger": {
+        "always": true
+      },
+      "confidence": "medium",
+      "n": 20,
+      "text": "Workout type and next-day HRV: Pilates 132.5, Yoga 126.2, HIIT 121.9, Strength Trainer 120.2, Rest day 115.5, Spin 113.9, Walking 113.1, Activity 110.1. Baseline across all days is 117.1 ms. Correlational, not causal \u2014 a day is more likely to be a hard workout day if the prior night already recovered well.",
+      "values": {
+        "baseline_all_days_hrv": 117.1,
+        "min_n": 20,
+        "activities": [
+          {
+            "activity": "Pilates",
+            "n": 47,
+            "mean_next_day_hrv": 132.5
+          },
+          {
+            "activity": "Yoga",
+            "n": 52,
+            "mean_next_day_hrv": 126.2
+          },
+          {
+            "activity": "HIIT",
+            "n": 72,
+            "mean_next_day_hrv": 121.9
+          },
+          {
+            "activity": "Strength Trainer",
+            "n": 21,
+            "mean_next_day_hrv": 120.2
+          },
+          {
+            "activity": "Rest day",
+            "n": 273,
+            "mean_next_day_hrv": 115.5
+          },
+          {
+            "activity": "Spin",
+            "n": 191,
+            "mean_next_day_hrv": 113.9
+          },
+          {
+            "activity": "Walking",
+            "n": 79,
+            "mean_next_day_hrv": 113.1
+          },
+          {
+            "activity": "Activity",
+            "n": 39,
+            "mean_next_day_hrv": 110.1
+          }
+        ],
+        "note": "Correlational, not causal \u2014 a day is more likely to be a hard workout day if the prior night already recovered well."
+      }
+    }
+  ],
+  "signal_panel": [
+    {
+      "id": "signal_rhr",
+      "label": "Resting heart rate",
+      "text": "r = -0.888 with HRV (n=799) \u2014 the strongest number in this whole dataset, and the least useful. RHR and HRV are two readings of the same autonomic state, taken in the same sleep window. A slider here would say 'lower your resting heart rate to raise your HRV' \u2014 circular, not actionable.",
+      "values": {
+        "variable": "rhr",
+        "label": "Resting heart rate",
+        "verdict": "exclude",
+        "why": "Same autonomic state as HRV, same measurement window \u2014 putting this in the app would say 'lower your RHR to raise your HRV', which is circular.",
+        "r": -0.888,
+        "p": 2.377563797466066e-271,
+        "n": 799
+      }
+    },
+    {
+      "id": "signal_resp_rate",
+      "label": "Respiratory rate",
+      "text": "r = -0.337 with HRV (n=799). Strong predictor, but not something you decide to change \u2014 it stays in the fitted model as a covariate, held at her median of 15.9 rpm, because removing it inflates the alcohol coefficient (see model variants: -32.25 vs -27.72 ms).",
+      "values": {
+        "variable": "resp_rate",
+        "label": "Respiratory rate",
+        "verdict": "signal_not_lever",
+        "why": "Strong predictor, not something you can decide to change. Held fixed as a covariate in the model; see model variants.",
+        "r": -0.337,
+        "p": 1.2876515576632726e-22,
+        "n": 799
+      }
+    }
+  ],
+  "insufficient_data": [
+    {
+      "question": "Shared your bed?",
+      "n_yes": 17,
+      "n_answered": 507
+    },
+    {
+      "question": "Feeling sick or ill?",
+      "n_yes": 13,
+      "n_answered": 507
+    },
+    {
+      "question": "Consumed caffeine?",
+      "n_yes": 5,
+      "n_answered": 415
+    },
+    {
+      "question": "Viewed a screen device in bed?",
+      "n_yes": 5,
+      "n_answered": 509
+    },
+    {
+      "question": "Have an injury or wound?",
+      "n_yes": 0,
+      "n_answered": 415
+    },
+    {
+      "question": "Read (non-screened device) while in bed?",
+      "n_yes": 0,
+      "n_answered": 507
+    },
+    {
+      "question": "Took prescription sleep medication?",
+      "n_yes": 0,
+      "n_answered": 415
+    }
+  ],
+  "model_ceiling": {
+    "r_squared": 0.258,
+    "n": 775
+  }
+}

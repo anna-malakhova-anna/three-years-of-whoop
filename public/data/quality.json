@@ -1,0 +1,112 @@
+{
+  "date_range": {
+    "start": "2023-09-05",
+    "end": "2026-09-16"
+  },
+  "n_days_in_range": 831,
+  "dedupe": {
+    "physio_rows_raw": 1027,
+    "physio_dup_dates_collapsed": 196,
+    "physio_rows_after_dedupe": 831,
+    "rule": "Per date, keep the row with the highest Recovery score % (non-null beats null). Naps create the duplicate cycles."
+  },
+  "missing_core": {
+    "recovery_pct": {
+      "label": "Recovery score",
+      "n_missing": 32,
+      "pct_missing": 3.9
+    },
+    "hrv": {
+      "label": "HRV",
+      "n_missing": 32,
+      "pct_missing": 3.9
+    },
+    "rhr": {
+      "label": "Resting heart rate",
+      "n_missing": 32,
+      "pct_missing": 3.9
+    }
+  },
+  "missing_sleep_consistency": 56,
+  "missing_day_strain": 2,
+  "journal": {
+    "rows_raw": 4666,
+    "rows_no_date": 10,
+    "rows_not_matched_to_kept_cycle": 866,
+    "questions": [
+      {
+        "question": "Have any alcoholic drinks?",
+        "n_answered": 509,
+        "n_yes": 121,
+        "sufficient": true
+      },
+      {
+        "question": "Shared your bed?",
+        "n_answered": 507,
+        "n_yes": 17,
+        "sufficient": false
+      },
+      {
+        "question": "Feeling sick or ill?",
+        "n_answered": 507,
+        "n_yes": 13,
+        "sufficient": false
+      },
+      {
+        "question": "Consumed caffeine?",
+        "n_answered": 415,
+        "n_yes": 5,
+        "sufficient": false
+      },
+      {
+        "question": "Viewed a screen device in bed?",
+        "n_answered": 509,
+        "n_yes": 5,
+        "sufficient": false
+      },
+      {
+        "question": "Have an injury or wound?",
+        "n_answered": 415,
+        "n_yes": 0,
+        "sufficient": false
+      },
+      {
+        "question": "Read (non-screened device) while in bed?",
+        "n_answered": 507,
+        "n_yes": 0,
+        "sufficient": false
+      },
+      {
+        "question": "Took prescription sleep medication?",
+        "n_answered": 415,
+        "n_yes": 0,
+        "sufficient": false
+      }
+    ],
+    "alcohol_coverage_by_year": [
+      {
+        "year": 2023,
+        "n_answered": 86
+      },
+      {
+        "year": 2024,
+        "n_answered": 270
+      },
+      {
+        "year": 2025,
+        "n_answered": 58
+      },
+      {
+        "year": 2026,
+        "n_answered": 95
+      }
+    ],
+    "insufficient_data_threshold": 30
+  },
+  "notes": [
+    "physio dedupe: highest Recovery score % per date wins (NaN loses).",
+    "journal matched to the exact retained cycle's Cycle start time, then (date, question) collapsed with OR (max) as a final safety net.",
+    "Journal coverage is uneven across the export; do not treat a thin year as equivalent evidence to a well-covered one.",
+    "No missing value in this pipeline is ever imputed. Rows missing a field are dropped from analyses that need that field, and the drop is counted here."
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "trajectory": [
+    {
+      "day": -2,
+      "n": 91,
+      "mean_recovery": 65.0,
+      "mean_hrv": 113.9,
+      "pct_ge_80": 34.1
+    },
+    {
+      "day": -1,
+      "n": 77,
+      "mean_recovery": 65.7,
+      "mean_hrv": 114.5,
+      "pct_ge_80": 31.2
+    },
+    {
+      "day": 0,
+      "n": 119,
+      "mean_recovery": 46.8,
+      "mean_hrv": 88.3,
+      "pct_ge_80": 8.4
+    },
+    {
+      "day": 1,
+      "n": 88,
+      "mean_recovery": 68.1,
+      "mean_hrv": 116.9,
+      "pct_ge_80": 39.8
+    },
+    {
+      "day": 2,
+      "n": 97,
+      "mean_recovery": 67.0,
+      "mean_hrv": 115.7,
+      "pct_ge_80": 37.1
+    },
+    {
+      "day": 3,
+      "n": 97,
+      "mean_recovery": 66.2,
+      "mean_hrv": 116.6,
+      "pct_ge_80": 38.1
+    },
+    {
+      "day": 4,
+      "n": 92,
+      "mean_recovery": 69.1,
+      "mean_hrv": 119.1,
+      "pct_ge_80": 41.3
+    }
+  ],
+  "base_rates": {
+    "pct_ge_80_sober_days": 43.8,
+    "pct_ge_80_all_days": 36.4,
+    "n_sober_days": 388,
+    "n_all_days": 799
+  },
+  "days_to_threshold": {
+    "mean": {
+      "threshold_value": 67.0,
+      "median_days": 1,
+      "pct_never_within_5_days": 4.1,
+      "n_events": 121
+    },
+    "sober_median": {
+      "threshold_value": 76.0,
+      "median_days": 2,
+      "pct_never_within_5_days": 14.0,
+      "n_events": 121
+    },
+    "80": {
+      "threshold_value": 80,
+      "median_days": 2,
+      "pct_never_within_5_days": 23.1,
+      "n_events": 121
+    }
+  },
+  "consecutive_drinking_nights": {
+    "singles": 78,
+    "doubles": 14,
+    "triples": 5,
+    "four_plus": 0
+  },
+  "n_drinking_nights": 121,
+  "notes": [
+    "Day 0 is the same cycle as the drinking night, not the day after \u2014 WHOOP attributes a cycle's recovery score to the sleep ending that morning.",
+    "Recovery >= 80 is a minority outcome even on sober nights (43.8% of them), so 'days to 80' is really 'days to get enough rolls of the die', not a recovery process."
+  ]
+}

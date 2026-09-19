@@ -1,0 +1,18 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Node / app build
+app/node_modules/
+app/dist/
+
+# OS
+.DS_Store
+
+# Reference images: not committed — see HANDOVER.md §7 and the design
+# decision to use pose/proportions only, not the source art itself
+# (copyrighted third-party illustration, not licensed for redistribution).
+/image.jpg
+/image1.jpg

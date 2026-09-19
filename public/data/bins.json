@@ -1,0 +1,232 @@
+{
+  "sleep_hours_sober": [
+    {
+      "bin": "<=5h",
+      "n": 2,
+      "mean_hrv": 26.0,
+      "mean_recovery": 4.5,
+      "pct_recovery_ge_80": 0.0
+    },
+    {
+      "bin": "5-6h",
+      "n": 4,
+      "mean_hrv": 108.2,
+      "mean_recovery": 53.8,
+      "pct_recovery_ge_80": 0.0
+    },
+    {
+      "bin": "6-6.5h",
+      "n": 6,
+      "mean_hrv": 129.2,
+      "mean_recovery": 73.0,
+      "pct_recovery_ge_80": 33.3
+    },
+    {
+      "bin": "6.5-7h",
+      "n": 21,
+      "mean_hrv": 128.3,
+      "mean_recovery": 71.8,
+      "pct_recovery_ge_80": 38.1
+    },
+    {
+      "bin": "7-7.5h",
+      "n": 47,
+      "mean_hrv": 124.6,
+      "mean_recovery": 72.3,
+      "pct_recovery_ge_80": 38.3
+    },
+    {
+      "bin": "7.5-8h",
+      "n": 100,
+      "mean_hrv": 128.1,
+      "mean_recovery": 72.9,
+      "pct_recovery_ge_80": 43.0
+    },
+    {
+      "bin": "8-8.5h",
+      "n": 94,
+      "mean_hrv": 130.9,
+      "mean_recovery": 76.5,
+      "pct_recovery_ge_80": 48.9
+    },
+    {
+      "bin": "8.5-9h",
+      "n": 52,
+      "mean_hrv": 128.7,
+      "mean_recovery": 75.4,
+      "pct_recovery_ge_80": 48.1
+    },
+    {
+      "bin": "9h+",
+      "n": 60,
+      "mean_hrv": 127.0,
+      "mean_recovery": 72.7,
+      "pct_recovery_ge_80": 46.7
+    }
+  ],
+  "resp_rate_sober": [
+    {
+      "bin": "<=15.0",
+      "n": 24,
+      "mean_hrv": 148.7,
+      "mean_recovery": 78.8,
+      "pct_recovery_ge_80": 50.0
+    },
+    {
+      "bin": "15-15.5",
+      "n": 63,
+      "mean_hrv": 127.7,
+      "mean_recovery": 73.8,
+      "pct_recovery_ge_80": 46.0
+    },
+    {
+      "bin": "15.5-16",
+      "n": 144,
+      "mean_hrv": 128.2,
+      "mean_recovery": 75.1,
+      "pct_recovery_ge_80": 46.5
+    },
+    {
+      "bin": "16-17",
+      "n": 149,
+      "mean_hrv": 125.1,
+      "mean_recovery": 71.9,
+      "pct_recovery_ge_80": 40.3
+    },
+    {
+      "bin": ">17",
+      "n": 6,
+      "mean_hrv": 87.2,
+      "mean_recovery": 45.5,
+      "pct_recovery_ge_80": 33.3
+    }
+  ],
+  "prior_day_strain_sober": [
+    {
+      "bin": "0-6",
+      "n": 60,
+      "mean_hrv": 126.5,
+      "mean_recovery": 74.8,
+      "pct_recovery_ge_80": 46.7
+    },
+    {
+      "bin": "6-9",
+      "n": 68,
+      "mean_hrv": 125.4,
+      "mean_recovery": 74.2,
+      "pct_recovery_ge_80": 36.8
+    },
+    {
+      "bin": "9-12",
+      "n": 46,
+      "mean_hrv": 135.5,
+      "mean_recovery": 75.8,
+      "pct_recovery_ge_80": 58.7
+    },
+    {
+      "bin": "12-15",
+      "n": 107,
+      "mean_hrv": 127.6,
+      "mean_recovery": 73.3,
+      "pct_recovery_ge_80": 43.0
+    },
+    {
+      "bin": "15+",
+      "n": 107,
+      "mean_hrv": 126.0,
+      "mean_recovery": 71.2,
+      "pct_recovery_ge_80": 41.1
+    }
+  ],
+  "sleep_consistency_sober": [
+    {
+      "bin": "<50",
+      "n": 30,
+      "mean_hrv": 129.3,
+      "mean_recovery": 76.0,
+      "pct_recovery_ge_80": 46.7
+    },
+    {
+      "bin": "50-60",
+      "n": 37,
+      "mean_hrv": 134.6,
+      "mean_recovery": 77.9,
+      "pct_recovery_ge_80": 54.1
+    },
+    {
+      "bin": "60-70",
+      "n": 69,
+      "mean_hrv": 128.5,
+      "mean_recovery": 73.3,
+      "pct_recovery_ge_80": 44.9
+    },
+    {
+      "bin": "70-80",
+      "n": 111,
+      "mean_hrv": 126.0,
+      "mean_recovery": 71.4,
+      "pct_recovery_ge_80": 45.9
+    },
+    {
+      "bin": "80-90",
+      "n": 112,
+      "mean_hrv": 126.7,
+      "mean_recovery": 73.5,
+      "pct_recovery_ge_80": 39.3
+    },
+    {
+      "bin": "90-100",
+      "n": 12,
+      "mean_hrv": 133.2,
+      "mean_recovery": 77.2,
+      "pct_recovery_ge_80": 50.0
+    }
+  ],
+  "workout_next_day_hrv": {
+    "baseline_all_days_hrv": 117.1,
+    "min_n": 20,
+    "activities": [
+      {
+        "activity": "Pilates",
+        "n": 47,
+        "mean_next_day_hrv": 132.5
+      },
+      {
+        "activity": "Yoga",
+        "n": 52,
+        "mean_next_day_hrv": 126.2
+      },
+      {
+        "activity": "HIIT",
+        "n": 72,
+        "mean_next_day_hrv": 121.9
+      },
+      {
+        "activity": "Strength Trainer",
+        "n": 21,
+        "mean_next_day_hrv": 120.2
+      },
+      {
+        "activity": "Rest day",
+        "n": 273,
+        "mean_next_day_hrv": 115.5
+      },
+      {
+        "activity": "Spin",
+        "n": 191,
+        "mean_next_day_hrv": 113.9
+      },
+      {
+        "activity": "Walking",
+        "n": 79,
+        "mean_next_day_hrv": 113.1
+      },
+      {
+        "activity": "Activity",
+        "n": 39,
+        "mean_next_day_hrv": 110.1
+      }
+    ],
+    "note": "Correlational, not causal \u2014 a day is more likely to be a hard workout day if the prior night already recovered well."
+  }
+}

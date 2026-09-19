@@ -1,0 +1,297 @@
+{
+  "univariate_correlations": [
+    {
+      "variable": "rhr",
+      "label": "Resting heart rate",
+      "verdict": "exclude",
+      "why": "Same autonomic state as HRV, same measurement window \u2014 putting this in the app would say 'lower your RHR to raise your HRV', which is circular.",
+      "r": -0.888,
+      "p": 2.377563797466066e-271,
+      "n": 799
+    },
+    {
+      "variable": "sleep_performance_pct",
+      "label": "Sleep performance %",
+      "verdict": "keep_context",
+      "why": "Partly circular \u2014 WHOOP computes it from asleep duration \u00f7 sleep need, so it overlaps with sleep hours.",
+      "r": 0.372,
+      "p": 1.0694535890549352e-27,
+      "n": 799
+    },
+    {
+      "variable": "resp_rate",
+      "label": "Respiratory rate",
+      "verdict": "signal_not_lever",
+      "why": "Strong predictor, not something you can decide to change. Held fixed as a covariate in the model; see model variants.",
+      "r": -0.337,
+      "p": 1.2876515576632726e-22,
+      "n": 799
+    },
+    {
+      "variable": "light_sleep_hours",
+      "label": "Light sleep hours",
+      "verdict": "keep_context",
+      "why": "Tracks total sleep hours closely; not an independent lever.",
+      "r": 0.303,
+      "p": 1.9996372895203518e-18,
+      "n": 799
+    },
+    {
+      "variable": "sleep_hours",
+      "label": "Total sleep hours",
+      "verdict": "primary_lever",
+      "why": "The strongest actionable lever in the dataset.",
+      "r": 0.237,
+      "p": 1.2501539179295815e-11,
+      "n": 799
+    },
+    {
+      "variable": "sleep_efficiency_pct",
+      "label": "Sleep efficiency %",
+      "verdict": "keep_context",
+      "why": "Modest independent signal.",
+      "r": 0.211,
+      "p": 1.5824001199164702e-09,
+      "n": 799
+    },
+    {
+      "variable": "deep_sleep_hours",
+      "label": "Deep (SWS) hours",
+      "verdict": "counterintuitive",
+      "why": "Negative correlation \u2014 almost certainly reverse causation (rebound deep sleep after alcohol/strain), not a cause of low HRV.",
+      "r": -0.191,
+      "p": 5.758885613560058e-08,
+      "n": 799
+    },
+    {
+      "variable": "spo2_pct",
+      "label": "Blood oxygen %",
+      "verdict": "keep_context",
+      "why": "Contextual reading, not a control.",
+      "r": 0.18,
+      "p": 3.2683804817808e-07,
+      "n": 798
+    },
+    {
+      "variable": "day_strain",
+      "label": "Day strain (same day)",
+      "verdict": "wrong_direction",
+      "why": "Positive correlation, but the causal arrow runs the other way: a high-HRV morning is what enables a hard day.",
+      "r": 0.134,
+      "p": 0.00014958295055337382,
+      "n": 798
+    },
+    {
+      "variable": "sleep_debt_min",
+      "label": "Sleep debt",
+      "verdict": "weak_context",
+      "why": "Weak; overlaps with sleep hours.",
+      "r": -0.123,
+      "p": 0.0004781969013906589,
+      "n": 799
+    },
+    {
+      "variable": "sleep_consistency_pct",
+      "label": "Sleep consistency %",
+      "verdict": "weak_lever",
+      "why": "Weak univariately and drops to non-significant once sleep hours and alcohol are controlled.",
+      "r": 0.12,
+      "p": 0.0008311506999035081,
+      "n": 775
+    },
+    {
+      "variable": "prior_day_strain",
+      "label": "Prior-day strain",
+      "verdict": "secondary_lever",
+      "why": "Correct causal direction, small effect.",
+      "r": -0.073,
+      "p": 0.040378073626544095,
+      "n": 798
+    },
+    {
+      "variable": "rem_sleep_hours",
+      "label": "REM hours",
+      "verdict": "no_relationship",
+      "why": "No detectable relationship with HRV, despite tracker marketing implying otherwise.",
+      "r": -0.052,
+      "p": 0.14452779599980953,
+      "n": 799
+    }
+  ],
+  "control_defaults": {
+    "sleep_hours": 8.0,
+    "prior_day_strain": 10.7,
+    "sleep_consistency_pct": 74.0
+  },
+  "primary_model": {
+    "n": 775,
+    "r_squared": 0.258,
+    "intercept": 426.49,
+    "coefficients": {
+      "sleep_hours": {
+        "coef_ms": 5.97,
+        "p": 1.7668401434590423e-09,
+        "significant": true
+      },
+      "alcohol": {
+        "coef_ms": -27.72,
+        "p": 3.610027364169554e-20,
+        "significant": true
+      },
+      "resp_rate": {
+        "coef_ms": -14.98,
+        "p": 7.815710158088437e-16,
+        "significant": true
+      },
+      "sleep_consistency_pct": {
+        "coef_ms": 0.14,
+        "p": 0.04723388106020191,
+        "significant": true
+      },
+      "prior_day_strain": {
+        "coef_ms": -0.14,
+        "p": 0.5562463032425129,
+        "significant": false
+      },
+      "skin_temp_c": {
+        "coef_ms": -3.54,
+        "p": 0.11618658987920505,
+        "significant": false
+      }
+    },
+    "resp_rate_held_at": 15.9,
+    "skin_temp_held_at": 34.9,
+    "terms": [
+      "sleep_hours",
+      "alcohol",
+      "resp_rate",
+      "sleep_consistency_pct",
+      "prior_day_strain",
+      "skin_temp_c"
+    ],
+    "description": "OLS on actionable-lever variables plus respiratory rate as a covariate. Used for the app's live headline HRV prediction; respiratory rate and skin temperature are held at the values above, not user-controlled."
+  },
+  "recovery_from_hrv": {
+    "slope": 0.65,
+    "intercept": -9.08,
+    "r_squared": 0.859,
+    "n": 799
+  },
+  "model_variants": {
+    "description": "Same row set (n=775) fit three ways, to show respiratory rate's mediation of the alcohol coefficient.",
+    "with_respiratory_rate": {
+      "n": 775,
+      "r_squared": 0.258,
+      "intercept": 426.49,
+      "coefficients": {
+        "sleep_hours": {
+          "coef_ms": 5.97,
+          "p": 1.7668401434590423e-09,
+          "significant": true
+        },
+        "alcohol": {
+          "coef_ms": -27.72,
+          "p": 3.610027364169554e-20,
+          "significant": true
+        },
+        "resp_rate": {
+          "coef_ms": -14.98,
+          "p": 7.815710158088437e-16,
+          "significant": true
+        },
+        "sleep_consistency_pct": {
+          "coef_ms": 0.14,
+          "p": 0.04723388106020191,
+          "significant": true
+        },
+        "prior_day_strain": {
+          "coef_ms": -0.14,
+          "p": 0.5562463032425129,
+          "significant": false
+        },
+        "skin_temp_c": {
+          "coef_ms": -3.54,
+          "p": 0.11618658987920505,
+          "significant": false
+        }
+      }
+    },
+    "without_respiratory_rate": {
+      "n": 775,
+      "r_squared": 0.193,
+      "intercept": 62.8,
+      "coefficients": {
+        "sleep_hours": {
+          "coef_ms": 6.23,
+          "p": 1.6174761990581508e-09,
+          "significant": true
+        },
+        "alcohol": {
+          "coef_ms": -32.25,
+          "p": 3.4038647514215192e-25,
+          "significant": true
+        },
+        "sleep_consistency_pct": {
+          "coef_ms": 0.19,
+          "p": 0.010428996824565991,
+          "significant": true
+        },
+        "prior_day_strain": {
+          "coef_ms": -0.17,
+          "p": 0.493661192432444,
+          "significant": false
+        },
+        "skin_temp_c": {
+          "coef_ms": -0.07,
+          "p": 0.9760268697056713,
+          "significant": false
+        }
+      }
+    },
+    "sleep_and_alcohol_only": {
+      "n": 775,
+      "r_squared": 0.185,
+      "intercept": 69.24,
+      "coefficients": {
+        "sleep_hours": {
+          "coef_ms": 6.58,
+          "p": 1.388208928940489e-10,
+          "significant": true
+        },
+        "alcohol": {
+          "coef_ms": -32.53,
+          "p": 4.700816656331977e-26,
+          "significant": true
+        }
+      }
+    }
+  },
+  "alcohol_contrast": {
+    "hrv_alcohol": 88.3,
+    "n_alcohol": 119,
+    "hrv_sober": 127.6,
+    "n_sober": 386,
+    "cohens_d": -1.47,
+    "p": 1.303305069131725e-28
+  },
+  "hrv_quartile_comparison": {
+    "high_hrv_threshold": 139.0,
+    "low_hrv_threshold": 98.0,
+    "high": {
+      "n": 210,
+      "sleep_hours": 8.2,
+      "resp_rate": 15.7,
+      "sleep_consistency_pct": 71.1,
+      "alcohol_n": 7,
+      "alcohol_known_n": 134
+    },
+    "low": {
+      "n": 209,
+      "sleep_hours": 7.7,
+      "resp_rate": 16.1,
+      "sleep_consistency_pct": 67.5,
+      "alcohol_n": 78,
+      "alcohol_known_n": 123
+    }
+  }
+}
