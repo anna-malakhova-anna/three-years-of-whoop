@@ -1,5 +1,5 @@
 """Run the full pipeline in order, writing every public/data/*.json output."""
-from pipeline import alcohol, bins, correlations, drift, quality, statements
+from pipeline import alcohol, bins, correlations, drift, quality, seasonality, statements
 
 
 def main() -> None:
@@ -8,6 +8,7 @@ def main() -> None:
     alcohol.main()
     bins.main()
     drift.main()
+    seasonality.main()
     statements.main()
 
 

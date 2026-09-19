@@ -45,3 +45,25 @@ def test_no_metric_claims_significance_it_does_not_have():
 def test_alcohol_coverage_gap_in_earlier_month_is_visible():
     assert REPORT["alcohol"]["a_n_known"] == 0
     assert REPORT["alcohol"]["b_n_known"] > 0
+
+
+def test_improved_flag_matches_each_metrics_own_good_direction():
+    """HRV/recovery/sleep hours/sleep consistency: higher is improved.
+    RHR/respiratory rate/day strain: lower is improved. Verifies the sign
+    logic directly rather than trusting the pipeline's own arithmetic."""
+    higher_is_better = ["hrv", "recovery_pct", "sleep_hours", "sleep_consistency_pct"]
+    lower_is_better = ["rhr", "resp_rate", "day_strain"]
+    for key in higher_is_better:
+        m = _metric(key)
+        assert m["improved"] == (m["delta"] > 0)
+    for key in lower_is_better:
+        m = _metric(key)
+        assert m["improved"] == (m["delta"] < 0)
+
+
+def test_respiratory_rate_is_the_one_metric_that_worsened():
+    """Locks in the specific mixed result the UI needs to render both
+    colors correctly — not all-green, not all-yellow."""
+    assert _metric("resp_rate")["improved"] is False
+    others = [m for m in REPORT["metrics"] if m["key"] != "resp_rate"]
+    assert all(m["improved"] for m in others)

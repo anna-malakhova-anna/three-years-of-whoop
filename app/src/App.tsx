@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState } from 'react'
 import { DriftPanel } from './components/DriftPanel'
+import { FlipCard } from './components/FlipCard'
 import { Footer } from './components/Footer'
 import { HeadlineNumber } from './components/HeadlineNumber'
+import { SeasonalityPanel } from './components/SeasonalityPanel'
 import { SignalPanel } from './components/SignalPanel'
 import { Slider } from './components/Slider'
 import { SpeechBubble } from './components/SpeechBubble'
@@ -13,6 +15,15 @@ import { predictHRV, predictRecovery, type Controls } from './lib/predict'
 import { selectStatement, type FactorId } from './lib/selectStatement'
 import { usePipelineData } from './lib/useData'
 import type { BinRow, Confidence, PipelineData } from './lib/types'
+
+const HRV_DEFINITION =
+  "HRV is the millisecond-to-millisecond variation in time between heartbeats — not your " +
+  'heart rate itself, but how much it fluctuates. It’s set by the autonomic nervous system: ' +
+  "more variability generally means the parasympathetic ('rest and recover') branch has more " +
+  "influence relative to the sympathetic ('fight or flight') branch. Higher HRV tracks with " +
+  'better recovery, more resilience to stress, and more capacity to absorb training load — ' +
+  'which is why this page treats maximizing it, not minimizing resting heart rate or anything ' +
+  'else, as the goal.'
 
 function useThemeToggle() {
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
@@ -86,7 +97,7 @@ function Loaded({
   theme: 'dark' | 'light'
   setTheme: (t: 'dark' | 'light') => void
 }) {
-  const { model, alcohol, bins, statements, quality, drift } = data
+  const { model, alcohol, bins, statements, quality, drift, seasonality } = data
   const { control_defaults } = model
 
   const [controls, setControls] = useState<Controls>({
@@ -95,6 +106,7 @@ function Loaded({
     sleepConsistencyPct: control_defaults.sleep_consistency_pct,
     alcohol: false,
   })
+  const [hrvDefinitionOpen, setHrvDefinitionOpen] = useState(false)
 
   const hrv = useMemo(() => predictHRV(model, controls), [model, controls])
   const recovery = useMemo(() => predictRecovery(model, hrv), [model, hrv])
@@ -168,6 +180,13 @@ function Loaded({
           <div className="center-panel">
             <SpeechBubble statement={statement} />
             <HeadlineNumber hrv={hrv} recovery={recovery} band={band} />
+            <FlipCard
+              label="Heart Rate Variability"
+              backText={HRV_DEFINITION}
+              ariaContext="this is the number to maximize"
+              isFlipped={hrvDefinitionOpen}
+              onToggle={() => setHrvDefinitionOpen((v) => !v)}
+            />
           </div>
         </div>
 
@@ -227,6 +246,7 @@ function Loaded({
       </section>
 
       <DriftPanel drift={drift} />
+      <SeasonalityPanel seasonality={seasonality} />
       <Footer quality={quality} model={model} />
     </div>
   )

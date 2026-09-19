@@ -21,15 +21,22 @@ OUT_DIR = Path(__file__).resolve().parent.parent / "public" / "data"
 PERIOD_A = "2025-08"
 PERIOD_B = "2026-08"
 
-# (column, label, unit)
+# (column, label, unit, good_direction) — good_direction is +1 if a higher
+# value is the desirable one, -1 if lower is. Sourced from the same
+# correlation signs used everywhere else in this pipeline (correlations.py):
+# HRV/recovery/sleep hours/sleep consistency are positive levers, RHR and
+# respiratory rate are negatively correlated with HRV, and day strain here
+# is scored on the same logic as prior_day_strain's small negative
+# coefficient (lower same-day strain pairs with better recovery in this
+# model) — a judgment call, not a strong finding on its own.
 METRICS = [
-    ("hrv", "HRV", "ms"),
-    ("recovery_pct", "Recovery", "%"),
-    ("rhr", "Resting heart rate", "bpm"),
-    ("sleep_hours", "Sleep hours", "h"),
-    ("sleep_consistency_pct", "Sleep consistency", "%"),
-    ("resp_rate", "Respiratory rate", "rpm"),
-    ("day_strain", "Day strain", ""),
+    ("hrv", "HRV", "ms", 1),
+    ("recovery_pct", "Recovery", "%", 1),
+    ("rhr", "Resting heart rate", "bpm", -1),
+    ("sleep_hours", "Sleep hours", "h", 1),
+    ("sleep_consistency_pct", "Sleep consistency", "%", 1),
+    ("resp_rate", "Respiratory rate", "rpm", -1),
+    ("day_strain", "Day strain", "", -1),
 ]
 
 
@@ -46,7 +53,7 @@ def build_drift_report() -> dict:
     b = _month_slice(daily, PERIOD_B)
 
     metrics = []
-    for col, label, unit in METRICS:
+    for col, label, unit, good_direction in METRICS:
         sa = a[col].dropna()
         sb = b[col].dropna()
         row = {
@@ -60,13 +67,16 @@ def build_drift_report() -> dict:
             "delta": None,
             "p": None,
             "cohens_d": None,
+            "improved": None,
         }
         if len(sa) >= 2 and len(sb) >= 2:
             t, p = stats.ttest_ind(sa, sb, equal_var=False)
             pooled_sd = ((sa.var(ddof=1) + sb.var(ddof=1)) / 2) ** 0.5
-            row["delta"] = round(float(sb.mean() - sa.mean()), 1)
+            delta = float(sb.mean() - sa.mean())
+            row["delta"] = round(delta, 1)
             row["p"] = float(p)
-            row["cohens_d"] = round(float((sb.mean() - sa.mean()) / pooled_sd), 2) if pooled_sd else None
+            row["cohens_d"] = round(delta / pooled_sd, 2) if pooled_sd else None
+            row["improved"] = (delta * good_direction) > 0 if delta != 0 else None
         metrics.append(row)
 
     alcohol_a = a.loc[a["alcohol_known"], "alcohol"]

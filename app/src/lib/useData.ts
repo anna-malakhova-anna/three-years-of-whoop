@@ -6,7 +6,7 @@ type LoadState =
   | { status: 'error'; error: string }
   | { status: 'ready'; data: PipelineData }
 
-const FILES = ['quality', 'model', 'alcohol', 'bins', 'statements', 'drift'] as const
+const FILES = ['quality', 'model', 'alcohol', 'bins', 'statements', 'drift', 'seasonality'] as const
 
 export function usePipelineData(): LoadState {
   const [state, setState] = useState<LoadState>({ status: 'loading' })
@@ -23,9 +23,9 @@ export function usePipelineData(): LoadState {
         }),
       ),
     )
-      .then(([quality, model, alcohol, bins, statements, drift]) => {
+      .then(([quality, model, alcohol, bins, statements, drift, seasonality]) => {
         if (cancelled) return
-        setState({ status: 'ready', data: { quality, model, alcohol, bins, statements, drift } })
+        setState({ status: 'ready', data: { quality, model, alcohol, bins, statements, drift, seasonality } })
       })
       .catch((err: Error) => {
         if (cancelled) return

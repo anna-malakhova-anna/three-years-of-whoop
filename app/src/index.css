@@ -526,6 +526,7 @@ section h2 {
 
 .flip-card {
   perspective: 1200px;
+  width: 100%;
 }
 
 .flip-card-inner {
@@ -563,14 +564,17 @@ section h2 {
 .flip-card-front h3 {
   font-size: 0.85rem;
   margin: 0;
-  /* Fixed clickable-green, independent of the live HRV band accent (which
-     can be yellow/orange/red) — this is an interaction cue, not a data
-     value, so it stays green regardless of band. */
-  color: #5ccb3e;
+  /* Fixed clickable-blue, independent of the live HRV band accent (which
+     can be green/yellow/orange/red) — this is an interaction cue, not a
+     data value. Same blue as the background halftone / secondary charts,
+     STYLE.md's sanctioned non-data chrome color, just brightened for
+     dark-theme text contrast (the base --benday-blue is only ~2.9:1 on
+     the dark ground — fine as a fill, not as small text). */
+  color: #1a86ff;
   text-align: left;
 }
 :root[data-theme='light'] .flip-card-front h3 {
-  color: #2e7a1a;
+  color: var(--benday-blue);
 }
 .flip-card-inner:hover .flip-card-front h3 {
   text-decoration: underline;
@@ -578,13 +582,13 @@ section h2 {
 
 .flip-card-hint {
   font-size: 0.65rem;
-  color: #5ccb3e;
+  color: #1a86ff;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   text-align: left;
 }
 :root[data-theme='light'] .flip-card-hint {
-  color: #2e7a1a;
+  color: var(--benday-blue);
 }
 
 .flip-card-back {
@@ -682,6 +686,28 @@ section h2 {
   color: var(--paper-muted);
 }
 
+.seasonality-chart {
+  gap: 0.35rem;
+  padding: 0 0.25rem;
+}
+.seasonality-chart .bar {
+  max-width: 28px;
+}
+.seasonality-chart .bar-label {
+  font-size: 0.62rem;
+}
+.seasonality-subheading {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--paper);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 1.75rem 0 0.75rem;
+}
+.seasonality-panel > .seasonality-subheading:first-of-type {
+  margin-top: 0.5rem;
+}
+
 .table-scroll {
   overflow-x: auto;
 }
@@ -711,6 +737,34 @@ td {
   color: var(--paper-muted);
   font-size: 0.75rem;
   white-space: nowrap;
+}
+
+/* August 2026 is the current period — a distinct column background marks
+   it regardless of any per-metric improved/worsened color. */
+.drift-current-col {
+  background: color-mix(in srgb, var(--panel) 55%, var(--ground));
+  border-left: 2px solid var(--rule);
+  border-right: 2px solid var(--rule);
+  font-weight: 700;
+}
+th.drift-current-col {
+  border-top: 2px solid var(--rule);
+}
+
+/* Fixed green/yellow, independent of the live HRV band accent (same
+   reasoning as the flip-card titles) — this is a judgment about a
+   historical comparison, not the current predicted state. */
+.drift-improved {
+  color: #5ccb3e;
+}
+:root[data-theme='light'] .drift-improved {
+  color: #2e7a1a;
+}
+.drift-worsened {
+  color: #ffd400;
+}
+:root[data-theme='light'] .drift-worsened {
+  color: #806a00;
 }
 
 th {

@@ -12,7 +12,8 @@
       "b_n": 23,
       "delta": 17.0,
       "p": 0.10746196306714484,
-      "cohens_d": 0.48
+      "cohens_d": 0.48,
+      "improved": true
     },
     {
       "key": "recovery_pct",
@@ -24,7 +25,8 @@
       "b_n": 23,
       "delta": 10.2,
       "p": 0.16494503518892797,
-      "cohens_d": 0.42
+      "cohens_d": 0.42,
+      "improved": true
     },
     {
       "key": "rhr",
@@ -36,7 +38,8 @@
       "b_n": 23,
       "delta": -2.6,
       "p": 0.1360130336278064,
-      "cohens_d": -0.45
+      "cohens_d": -0.45,
+      "improved": true
     },
     {
       "key": "sleep_hours",
@@ -48,7 +51,8 @@
       "b_n": 23,
       "delta": 0.2,
       "p": 0.4517999040645009,
-      "cohens_d": 0.22
+      "cohens_d": 0.22,
+      "improved": true
     },
     {
       "key": "sleep_consistency_pct",
@@ -60,7 +64,8 @@
       "b_n": 21,
       "delta": 6.6,
       "p": 0.09980402448378835,
-      "cohens_d": 0.51
+      "cohens_d": 0.51,
+      "improved": true
     },
     {
       "key": "resp_rate",
@@ -72,7 +77,8 @@
       "b_n": 23,
       "delta": 0.1,
       "p": 0.5718818507119807,
-      "cohens_d": 0.17
+      "cohens_d": 0.17,
+      "improved": false
     },
     {
       "key": "day_strain",
@@ -84,7 +90,8 @@
       "b_n": 23,
       "delta": -1.9,
       "p": 0.15247160558250078,
-      "cohens_d": -0.42
+      "cohens_d": -0.42,
+      "improved": true
     }
   ],
   "alcohol": {

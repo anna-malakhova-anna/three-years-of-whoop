@@ -160,6 +160,7 @@ export interface DriftMetric {
   delta: number | null
   p: number | null
   cohens_d: number | null
+  improved: boolean | null
 }
 
 export interface DriftReport {
@@ -170,6 +171,39 @@ export interface DriftReport {
   notes: string[]
 }
 
+export interface SeasonalityMonth {
+  month: string
+  hrv_mean: number | null
+  hrv_n: number
+  hrv_sd: number | null
+  recovery_mean: number | null
+  recovery_n: number
+  sleep_hours_mean: number | null
+  sleep_hours_n: number
+  workout_pct: number | null
+  n_days: number
+}
+
+export interface SeasonalityReport {
+  monthly: SeasonalityMonth[]
+  anova: {
+    hrv_f: number
+    hrv_p: number
+    hrv_eta_squared: number
+    recovery_f: number
+    recovery_p: number
+    recovery_eta_squared: number
+    sleep_hours_f: number
+    sleep_hours_p: number
+    sleep_hours_eta_squared: number
+  }
+  annual_cycle_fit: { r_squared: number; sin_p: number; cos_p: number; n: number }
+  workout_chi_square: { chi2: number; p: number; dof: number; cramers_v: number; n: number }
+  best_month: SeasonalityMonth
+  worst_month: SeasonalityMonth
+  notes: string[]
+}
+
 export interface PipelineData {
   quality: QualityReport
   model: ModelReport
@@ -177,4 +211,5 @@ export interface PipelineData {
   bins: BinsReport
   statements: StatementsReport
   drift: DriftReport
+  seasonality: SeasonalityReport
 }

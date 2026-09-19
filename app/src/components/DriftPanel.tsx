@@ -27,30 +27,34 @@ export function DriftPanel({ drift }: { drift: DriftReport }) {
             <tr>
               <th>Metric</th>
               <th>{labelA}</th>
-              <th>{labelB}</th>
+              <th className="drift-current-col">{labelB} (current)</th>
               <th>Δ</th>
               <th>Significance</th>
             </tr>
           </thead>
           <tbody>
-            {drift.metrics.map((m) => (
-              <tr key={m.key}>
-                <td>{m.label}</td>
-                <td>
-                  {m.a_mean ?? '—'}
-                  {m.a_mean != null ? m.unit : ''} <small>(n={m.a_n})</small>
-                </td>
-                <td>
-                  {m.b_mean ?? '—'}
-                  {m.b_mean != null ? m.unit : ''} <small>(n={m.b_n})</small>
-                </td>
-                <td className="drift-delta">
-                  {m.delta != null ? (m.delta > 0 ? `+${m.delta}` : m.delta) : '—'}
-                  {m.delta != null ? m.unit : ''}
-                </td>
-                <td className="drift-p">{m.p != null ? `p=${m.p.toFixed(2)}, not significant` : 'n/a'}</td>
-              </tr>
-            ))}
+            {drift.metrics.map((m) => {
+              const directionClass =
+                m.improved === true ? 'drift-improved' : m.improved === false ? 'drift-worsened' : ''
+              return (
+                <tr key={m.key}>
+                  <td>{m.label}</td>
+                  <td>
+                    {m.a_mean ?? '—'}
+                    {m.a_mean != null ? m.unit : ''} <small>(n={m.a_n})</small>
+                  </td>
+                  <td className={`drift-current-col ${directionClass}`}>
+                    {m.b_mean ?? '—'}
+                    {m.b_mean != null ? m.unit : ''} <small>(n={m.b_n})</small>
+                  </td>
+                  <td className="drift-delta">
+                    {m.delta != null ? (m.delta > 0 ? `+${m.delta}` : m.delta) : '—'}
+                    {m.delta != null ? m.unit : ''}
+                  </td>
+                  <td className="drift-p">{m.p != null ? `p=${m.p.toFixed(2)}, not significant` : 'n/a'}</td>
+                </tr>
+              )
+            })}
           </tbody>
         </table>
       </div>

@@ -1,0 +1,203 @@
+{
+  "monthly": [
+    {
+      "month": "Jan",
+      "hrv_mean": 110.7,
+      "hrv_n": 70,
+      "hrv_sd": 34.0,
+      "recovery_mean": 61.6,
+      "recovery_n": 70,
+      "sleep_hours_mean": 8.01,
+      "sleep_hours_n": 70,
+      "workout_pct": 70.4,
+      "n_days": 71
+    },
+    {
+      "month": "Feb",
+      "hrv_mean": 110.4,
+      "hrv_n": 46,
+      "hrv_sd": 35.8,
+      "recovery_mean": 64.2,
+      "recovery_n": 46,
+      "sleep_hours_mean": 8.34,
+      "sleep_hours_n": 46,
+      "workout_pct": 60.9,
+      "n_days": 46
+    },
+    {
+      "month": "Mar",
+      "hrv_mean": 119.7,
+      "hrv_n": 54,
+      "hrv_sd": 29.2,
+      "recovery_mean": 71.4,
+      "recovery_n": 54,
+      "sleep_hours_mean": 8.18,
+      "sleep_hours_n": 54,
+      "workout_pct": 72.9,
+      "n_days": 59
+    },
+    {
+      "month": "Apr",
+      "hrv_mean": 129.9,
+      "hrv_n": 74,
+      "hrv_sd": 27.4,
+      "recovery_mean": 75.0,
+      "recovery_n": 74,
+      "sleep_hours_mean": 8.01,
+      "sleep_hours_n": 74,
+      "workout_pct": 71.1,
+      "n_days": 76
+    },
+    {
+      "month": "May",
+      "hrv_mean": 109.6,
+      "hrv_n": 67,
+      "hrv_sd": 34.3,
+      "recovery_mean": 57.8,
+      "recovery_n": 67,
+      "sleep_hours_mean": 8.05,
+      "sleep_hours_n": 67,
+      "workout_pct": 57.1,
+      "n_days": 70
+    },
+    {
+      "month": "Jun",
+      "hrv_mean": 123.2,
+      "hrv_n": 69,
+      "hrv_sd": 31.0,
+      "recovery_mean": 73.7,
+      "recovery_n": 69,
+      "sleep_hours_mean": 8.19,
+      "sleep_hours_n": 69,
+      "workout_pct": 66.2,
+      "n_days": 74
+    },
+    {
+      "month": "Jul",
+      "hrv_mean": 118.7,
+      "hrv_n": 73,
+      "hrv_sd": 29.9,
+      "recovery_mean": 66.9,
+      "recovery_n": 73,
+      "sleep_hours_mean": 8.22,
+      "sleep_hours_n": 73,
+      "workout_pct": 68.0,
+      "n_days": 75
+    },
+    {
+      "month": "Aug",
+      "hrv_mean": 119.4,
+      "hrv_n": 71,
+      "hrv_sd": 31.9,
+      "recovery_mean": 67.4,
+      "recovery_n": 71,
+      "sleep_hours_mean": 8.14,
+      "sleep_hours_n": 71,
+      "workout_pct": 62.2,
+      "n_days": 74
+    },
+    {
+      "month": "Sep",
+      "hrv_mean": 111.5,
+      "hrv_n": 75,
+      "hrv_sd": 35.0,
+      "recovery_mean": 64.7,
+      "recovery_n": 75,
+      "sleep_hours_mean": 7.72,
+      "sleep_hours_n": 75,
+      "workout_pct": 60.3,
+      "n_days": 78
+    },
+    {
+      "month": "Oct",
+      "hrv_mean": 123.2,
+      "hrv_n": 65,
+      "hrv_sd": 28.6,
+      "recovery_mean": 67.8,
+      "recovery_n": 65,
+      "sleep_hours_mean": 7.91,
+      "sleep_hours_n": 65,
+      "workout_pct": 66.7,
+      "n_days": 69
+    },
+    {
+      "month": "Nov",
+      "hrv_mean": 105.5,
+      "hrv_n": 70,
+      "hrv_sd": 32.7,
+      "recovery_mean": 62.0,
+      "recovery_n": 70,
+      "sleep_hours_mean": 7.74,
+      "sleep_hours_n": 70,
+      "workout_pct": 67.1,
+      "n_days": 70
+    },
+    {
+      "month": "Dec",
+      "hrv_mean": 122.1,
+      "hrv_n": 65,
+      "hrv_sd": 30.4,
+      "recovery_mean": 71.7,
+      "recovery_n": 65,
+      "sleep_hours_mean": 7.78,
+      "sleep_hours_n": 65,
+      "workout_pct": 63.8,
+      "n_days": 69
+    }
+  ],
+  "anova": {
+    "hrv_f": 3.64,
+    "hrv_p": 4.713399018650077e-05,
+    "hrv_eta_squared": 0.048,
+    "recovery_f": 3.77,
+    "recovery_p": 2.723071750891853e-05,
+    "recovery_eta_squared": 0.05,
+    "sleep_hours_f": 2.48,
+    "sleep_hours_p": 0.004611257695428674,
+    "sleep_hours_eta_squared": 0.034
+  },
+  "annual_cycle_fit": {
+    "r_squared": 0.0075,
+    "sin_p": 0.23716047543335272,
+    "cos_p": 0.03491049754107419,
+    "n": 799
+  },
+  "workout_chi_square": {
+    "chi2": 7.58,
+    "p": 0.7502053940126218,
+    "dof": 11,
+    "cramers_v": 0.096,
+    "n": 831
+  },
+  "best_month": {
+    "month": "Apr",
+    "hrv_mean": 129.9,
+    "hrv_n": 74,
+    "hrv_sd": 27.4,
+    "recovery_mean": 75.0,
+    "recovery_n": 74,
+    "sleep_hours_mean": 8.01,
+    "sleep_hours_n": 74,
+    "workout_pct": 71.1,
+    "n_days": 76
+  },
+  "worst_month": {
+    "month": "Nov",
+    "hrv_mean": 105.5,
+    "hrv_n": 70,
+    "hrv_sd": 32.7,
+    "recovery_mean": 62.0,
+    "recovery_n": 70,
+    "sleep_hours_mean": 7.74,
+    "sleep_hours_n": 70,
+    "workout_pct": 67.1,
+    "n_days": 70
+  },
+  "notes": [
+    "Month-of-year differences in HRV are statistically significant (one-way ANOVA, p=0.0000) but small: month explains only about 5% of day-to-day HRV variance (eta-squared). With n=831 days, even a small real effect \u2014 or a handful of unusually good or bad weeks that happen to fall in the same month \u2014 reaches significance.",
+    "A single annual sine wave, the shape an actual seasonal effect would produce, explains under 0.8% of variance and its sine term alone is not significant (p=0.24). The month-to-month pattern doesn't trace a smooth curve \u2014 HANDOVER.md's original flag holds.",
+    "Sleep hours show the same shape: statistically significant by month (p=0.0046) but small (eta-squared=0.034) \u2014 a few tenths of an hour of swing, not a real winter-vs-summer sleep pattern.",
+    "Whether a workout got logged at all does *not* vary by month (chi-square test, p=0.75) \u2014 no seasonal training pattern here, at least not one that shows up as more or fewer days with a workout logged.",
+    "Read all of this as: real month-to-month variation exists in this export, but it doesn't look like season causing it \u2014 in HRV, sleep, or training frequency."
+  ]
+}
