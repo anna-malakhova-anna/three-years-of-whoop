@@ -523,16 +523,84 @@ section h2 {
   padding-top: 0;
   margin-top: 0;
 }
-.signal-card h3 {
-  font-size: 0.85rem;
-  margin: 0 0 0.3rem;
-  color: var(--paper);
+
+.flip-card {
+  perspective: 1200px;
 }
-.signal-card p {
+
+.flip-card-inner {
+  all: unset;
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 128px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 450ms ease;
+}
+.flip-card-inner.flipped {
+  transform: rotateY(180deg);
+}
+.flip-card-inner:focus-visible {
+  outline: 2px solid var(--accent-fill);
+  outline-offset: 2px;
+}
+
+.flip-card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.flip-card-front {
+  justify-content: space-between;
+}
+.flip-card-front h3 {
+  font-size: 0.85rem;
+  margin: 0;
+  color: var(--paper);
+  text-align: left;
+}
+.flip-card-inner:hover .flip-card-front h3 {
+  color: var(--accent-text);
+}
+
+.flip-card-hint {
+  font-size: 0.65rem;
+  color: var(--paper-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: left;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  justify-content: flex-start;
+  gap: 0.35rem;
+}
+.flip-card-back-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--paper-muted);
+  text-align: left;
+}
+.flip-card-back p {
   font-size: 0.8rem;
   color: var(--paper-muted);
   line-height: 1.5;
   margin: 0;
+  text-align: left;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flip-card-inner {
+    transition: none;
+  }
 }
 
 .workout-bars {
