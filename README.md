@@ -4,8 +4,7 @@ An interactive figure built on three years of one person's real WHOOP export (Se
 2026, 831 days). Move a control, watch a predicted HRV number respond, and read a sentence
 generated from the actual data for that value — not a hardcoded copy line.
 
-_Not yet deployed — see "Deploying" below. Once pushed to GitHub with Pages enabled, the live
-URL goes here._
+_Not yet deployed._
 
 ## Three findings, before anything else
 
