@@ -149,13 +149,13 @@ body::before {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1rem 4rem;
+  position: relative;
 }
 
 .app-header {
   text-align: center;
   max-width: 640px;
   margin: 0 auto 2.5rem;
-  position: relative;
 }
 
 .app-header h1 {
@@ -175,8 +175,8 @@ body::before {
 
 .theme-toggle {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 2rem;
+  right: 1rem;
   background: var(--panel);
   border: 3px solid var(--rule);
   color: var(--paper);
@@ -239,17 +239,26 @@ body::before {
   gap: 1rem;
 }
 
-/* The band's dot-density swatch — STYLE.md §4's second, non-color channel,
-   relocated here now that there's no figure torso to carry it. Pitch/size
-   snap per band (no transition), color still eases like everything else. */
+/* The band's dot swatch — STYLE.md §4's second, non-color channel,
+   relocated here now that there's no figure torso to carry it. 9 dots,
+   arranged as a heart rather than a tiled grid; dot size still snaps per
+   band (no transition) while color eases like everything else. */
 .band-swatch {
+  position: relative;
   flex-shrink: 0;
   width: 44px;
   height: 44px;
   border: 2px solid var(--rule);
   background-color: var(--ground);
-  background-image: radial-gradient(circle, var(--accent-fill) calc(var(--dot-size) / 2), transparent calc(var(--dot-size) / 2 + 0.5px));
-  background-size: var(--dot-pitch) var(--dot-pitch);
+}
+
+.heart-dot {
+  position: absolute;
+  width: calc(var(--dot-size) + 3px);
+  height: calc(var(--dot-size) + 3px);
+  background: var(--accent-fill);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
   transition: background-color 240ms ease-out;
 }
 
