@@ -1,4 +1,4 @@
-import { ConfidenceDot } from './Slider'
+import { ConfidenceBadge, confidenceBorderClass } from './Slider'
 import type { Confidence } from '../lib/types'
 
 interface ToggleProps {
@@ -11,10 +11,10 @@ interface ToggleProps {
 
 export function Toggle({ id, label, checked, confidence, onChange }: ToggleProps) {
   return (
-    <div className={`control-card confidence-border-${confidence}`}>
+    <div className={`control-card ${confidenceBorderClass(confidence)}`}>
       <div className="control-card-header">
         <label htmlFor={id}>{label}</label>
-        <ConfidenceDot confidence={confidence} />
+        <ConfidenceBadge confidence={confidence} />
       </div>
       <button
         id={id}

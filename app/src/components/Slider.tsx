@@ -12,16 +12,31 @@ interface SliderProps {
   onChange: (value: number) => void
 }
 
-export function ConfidenceDot({ confidence }: { confidence: Confidence }) {
-  return <span className={`confidence-dot confidence-${confidence}`} title={`${confidence} confidence`} />
+const BADGE_TEXT: Record<Confidence, string> = { high: 'high', medium: 'med', low: 'low' }
+const BORDER_CLASS: Record<Confidence, string> = {
+  high: '',
+  medium: 'confidence-dashed',
+  low: 'confidence-dotted',
+}
+
+export function ConfidenceBadge({ confidence }: { confidence: Confidence }) {
+  return (
+    <span className={`confidence-badge confidence-${confidence}`} title={`${confidence} confidence`}>
+      {BADGE_TEXT[confidence]}
+    </span>
+  )
+}
+
+export function confidenceBorderClass(confidence: Confidence): string {
+  return BORDER_CLASS[confidence]
 }
 
 export function Slider({ id, label, value, min, max, step, unit, confidence, onChange }: SliderProps) {
   return (
-    <div className={`control-card confidence-border-${confidence}`}>
+    <div className={`control-card ${confidenceBorderClass(confidence)}`}>
       <div className="control-card-header">
         <label htmlFor={id}>{label}</label>
-        <ConfidenceDot confidence={confidence} />
+        <ConfidenceBadge confidence={confidence} />
       </div>
       <input
         id={id}
