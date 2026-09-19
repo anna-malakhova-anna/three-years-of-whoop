@@ -1,6 +1,4 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Figure } from './components/Figure'
-import type { ConnectorWeights } from './lib/figureAnchors'
 import { Footer } from './components/Footer'
 import { HeadlineNumber } from './components/HeadlineNumber'
 import { InsufficientData } from './components/InsufficientData'
@@ -117,23 +115,6 @@ function Loaded({
     setLastMoved(factor)
   }
 
-  const connectorWeights: ConnectorWeights = useMemo(() => {
-    const c = model.primary_model.coefficients
-    const mags = {
-      sleep_hours: Math.abs(c.sleep_hours.coef_ms),
-      alcohol: Math.abs(c.alcohol.coef_ms),
-      prior_day_strain: Math.abs(c.prior_day_strain.coef_ms),
-      sleep_consistency_pct: Math.abs(c.sleep_consistency_pct.coef_ms),
-    }
-    const max = Math.max(...Object.values(mags))
-    return {
-      sleep_hours: mags.sleep_hours / max,
-      alcohol: mags.alcohol / max,
-      prior_day_strain: mags.prior_day_strain / max,
-      sleep_consistency_pct: mags.sleep_consistency_pct / max,
-    }
-  }, [model])
-
   const colors = bandColors(theme)
   const sleepBin = binLabelFor(controls.sleepHours, SLEEP_HOURS_EDGES, SLEEP_HOURS_LABELS)
   const strainBin = binLabelFor(controls.priorDayStrain, STRAIN_EDGES, STRAIN_LABELS)
@@ -183,15 +164,10 @@ function Loaded({
           <WorkoutPanel workouts={bins.workout_next_day_hrv} theme={theme} />
         </div>
 
-        <div className="figure-column">
-          <div className="figure-wrapper">
-            <Figure weights={connectorWeights} />
-            <div className="headline-anchor">
-              <HeadlineNumber hrv={hrv} recovery={recovery} band={band} />
-            </div>
-            <div className="speech-anchor">
-              <SpeechBubble statement={statement} />
-            </div>
+        <div className="center-column">
+          <div className="center-panel">
+            <SpeechBubble statement={statement} />
+            <HeadlineNumber hrv={hrv} recovery={recovery} band={band} />
           </div>
         </div>
 

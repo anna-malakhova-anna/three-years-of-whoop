@@ -2,13 +2,14 @@
    an explicit choice, toggled only via [data-theme="light"]. */
 :root,
 :root:where(:not([data-theme='light'])) {
-  --ground: #141312;
+  --ground: #0a0a0a;
   --panel: #1c1a18;
   --ink: #0a0908;
   --paper: #f2ede4;
   --paper-muted: #a8a29a;
   --rule: #000000;
   --bubble-fill: #f2ede4;
+  --benday-blue: #0057b8;
   color-scheme: dark;
 }
 
@@ -20,31 +21,47 @@
   --paper-muted: #5b554c;
   --rule: #000000;
   --bubble-fill: #f2ede4;
+  --benday-blue: #0057b8;
   color-scheme: light;
 }
 
 /* HRV accent bands — STYLE.md §4. Default to "good" before the first
-   prediction lands; App sets body[data-band] on every HRV change. */
+   prediction lands; App sets body[data-band] on every HRV change.
+   --dot-size/--dot-pitch are the second, non-color channel (§4's
+   colorblindness fix) — density rises as HRV falls, so the band stays
+   legible in greyscale/CVD even though hue collapses. With the figure
+   removed, these drive the headline number panel's dot fill instead of
+   a figure's torso — same mechanism, relocated home. */
 body,
 body[data-band='good'] {
   --accent-fill: #5ccb3e;
   --accent-text: #5ccb3e;
+  --dot-size: 3px;
+  --dot-pitch: 12px;
 }
 body[data-band='high'] {
   --accent-fill: #1f8f45;
   --accent-text: #35c066;
+  --dot-size: 2px;
+  --dot-pitch: 14px;
 }
 body[data-band='mid'] {
   --accent-fill: #ffd400;
   --accent-text: #ffd400;
+  --dot-size: 4px;
+  --dot-pitch: 10px;
 }
 body[data-band='low'] {
   --accent-fill: #f4761b;
   --accent-text: #f4761b;
+  --dot-size: 5px;
+  --dot-pitch: 8px;
 }
 body[data-band='poor'] {
   --accent-fill: #cc2222;
   --accent-text: #e85c50;
+  --dot-size: 6px;
+  --dot-pitch: 6px;
 }
 
 /* STYLE.md's band hexes are validated only against the dark ground — as
@@ -73,25 +90,6 @@ body[data-band='poor'] {
   --accent-text: #cc2222;
 }
 
-.figure-torso {
-  fill: url(#dot-good);
-}
-body[data-band='high'] .figure-torso {
-  fill: url(#dot-high);
-}
-body[data-band='good'] .figure-torso {
-  fill: url(#dot-good);
-}
-body[data-band='mid'] .figure-torso {
-  fill: url(#dot-mid);
-}
-body[data-band='low'] .figure-torso {
-  fill: url(#dot-low);
-}
-body[data-band='poor'] .figure-torso {
-  fill: url(#dot-poor);
-}
-
 * {
   box-sizing: border-box;
 }
@@ -109,6 +107,28 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   transition: background-color 240ms ease-out;
+  position: relative;
+}
+
+/* Fixed blue Ben-Day field, STYLE.md §3 — texture, not content. Must not
+   be confused with the data dots (§4): this one never changes color or
+   pitch regardless of band or theme. Panels sit opaque on top of it. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(
+      circle at center,
+      color-mix(in srgb, var(--benday-blue) 50%, transparent) 1.4px,
+      transparent 1.5px
+    )
+    0 0 / 10px 10px;
+  pointer-events: none;
+}
+
+:root[data-theme='light'] body::before {
+  opacity: 0.5;
 }
 
 #root {
@@ -193,46 +213,57 @@ body {
   min-width: 0;
 }
 
-.figure-column {
+.center-column {
   display: flex;
   justify-content: center;
 }
 
-.figure-wrapper {
-  position: relative;
+.center-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
   width: 100%;
   max-width: 320px;
-  margin-top: 3.25rem;
-}
-
-.figure-svg {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.headline-anchor {
-  position: absolute;
-  top: 50%;
-  left: 55%;
-  width: max-content;
-  transform: translate(-50%, -50%);
+  margin-top: 1rem;
   text-align: center;
-  pointer-events: none;
-  z-index: 2;
 }
 
 .headline-number {
-  background: color-mix(in srgb, var(--panel) 90%, transparent);
+  background: var(--panel);
   border: 3px solid var(--rule);
   border-radius: 4px;
-  padding: 0.35rem 0.75rem;
+  padding: 0.6rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* The band's dot-density swatch — STYLE.md §4's second, non-color channel,
+   relocated here now that there's no figure torso to carry it. Pitch/size
+   snap per band (no transition), color still eases like everything else. */
+.band-swatch {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--rule);
+  background-color: var(--ground);
+  background-image: radial-gradient(circle, var(--accent-fill) calc(var(--dot-size) / 2), transparent calc(var(--dot-size) / 2 + 0.5px));
+  background-size: var(--dot-pitch) var(--dot-pitch);
+  transition: background-color 240ms ease-out;
+}
+
+.headline-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .hrv-value {
   display: flex;
   align-items: baseline;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.35rem;
   white-space: nowrap;
 }
@@ -265,24 +296,16 @@ body {
 
 /* ---------- speech bubble ---------- */
 
-.speech-anchor {
-  position: absolute;
-  top: -20%;
-  left: 62%;
-  transform: translateX(-50%);
-  width: 84%;
-  z-index: 1;
-}
-
 .speech-bubble {
   background: var(--bubble-fill);
   border: 4px solid var(--accent-fill);
   border-radius: 6px;
-  padding: 0.85rem 1rem 0.6rem;
+  padding: 0.85rem 1rem 1.4rem;
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
   position: relative;
+  width: 100%;
   transition: border-color 240ms ease-out;
 }
 
@@ -294,7 +317,8 @@ body {
   content: '';
   position: absolute;
   bottom: -14px;
-  left: 58%;
+  left: 50%;
+  transform: translateX(-50%);
   width: 22px;
   height: 22px;
   background: var(--bubble-fill);
@@ -608,22 +632,12 @@ th {
   .layout {
     grid-template-columns: 1fr;
   }
-  .figure-column {
+  .center-column {
     order: -1;
   }
-  .figure-wrapper {
-    max-width: 260px;
+  .center-panel {
+    max-width: 320px;
     margin: 0 auto 1.5rem;
-  }
-  .speech-anchor {
-    position: static;
-    width: 100%;
-    margin-top: 1rem;
-    transform: none;
-    left: auto;
-  }
-  .speech-bubble::after {
-    left: 50%;
   }
   .workout-bars li {
     grid-template-columns: 80px minmax(0, 1fr) auto;

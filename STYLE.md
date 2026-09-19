@@ -35,7 +35,7 @@ Anna wants Roy Lichtenstein. Take that as a **technique vocabulary**, not a canv
 **Two places the brief fights itself — resolve them this way:**
 
 1. **Lichtenstein is light-ground; this page is dark.** Treat it as a comic panel printed on black newsprint, not as a white canvas with the lightness inverted. Keep the black contour lines black — do not flip them to white. Let the dark ground read as the gutter between panels, and let panels sit on it as raised surfaces.
-2. **Lichtenstein's palette is red/yellow/blue; the HRV scale is green-dominant.** The accent colors are set by the data (§4) and are not negotiable to fit the style. So the pop-art identity has to be carried by **form** — dots, contours, panel borders, balloon geometry — not by hue. Blue survives only as a static non-data accent (panel chrome, the figure's line work); never as a data color.
+2. **Lichtenstein's palette is red/yellow/blue; the HRV scale is green-dominant.** The accent colors are set by the data (§4) and are not negotiable to fit the style. So the pop-art identity has to be carried by **form** — dots, contours, panel borders, balloon geometry — not by hue. Blue survives only as static, non-data chrome: the background halftone field (§3), panel rules, the figure's line work. Blue never encodes a value.
 
 ---
 
@@ -45,14 +45,51 @@ Warm near-black ground, newsprint-white ink. All ratios below measured, not esti
 
 ```css
 :root[data-theme="dark"], :root:where(:not([data-theme="light"])) {
-  --ground:       #141312;  /* page background — warm black */
+  --ground:       #0A0A0A;  /* page background — near-black */
   --panel:        #1C1A18;  /* comic panel surface */
   --ink:          #0A0908;  /* contour lines — stays BLACK on dark */
   --paper:        #F2EDE4;  /* primary text, newsprint white — 15.9:1 */
   --paper-muted:  #A8A29A;  /* secondary text — 7.3:1 */
   --rule:         #000000;  /* panel borders */
+  --benday-blue:  #0057B8;  /* background halftone — Lichtenstein blue */
 }
 ```
+
+### The background halftone
+
+The page ground is black overlaid with a **fixed blue Ben-Day dot field** running edge to edge. `#0057B8` at 50% alpha over black resolves to `#002C5C` — **1.51:1 against the ground**. That is the target: present as texture, invisible as content. Paper-white text over a dot still measures 11.9:1, so the field never threatens legibility.
+
+Implement as a single fixed-position pseudo-element behind everything, not as a `background-image` on `body` (which tiles against the scroll and moirés):
+
+```css
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at center,
+      color-mix(in srgb, var(--benday-blue) 50%, transparent) 1.4px,
+      transparent 1.5px)
+    0 0 / 10px 10px;
+  pointer-events: none;
+}
+```
+
+Keep the pitch at or above 10px. Below that it aliases badly on non-retina displays and shimmers on scroll.
+
+**The two dot systems must not be confused.** This is the one thing to get right:
+
+| | Background field | Data dots (§4) |
+|---|---|---|
+| Color | blue, fixed | HRV band accent |
+| Pitch | 10px, **never changes** | 6–14px, **encodes the band** |
+| Contrast | ~1.5:1, recedes | high, demands attention |
+| Where | behind everything | inside the figure's torso only |
+
+If the background field is loud enough to compete, the density encoding stops being readable and the accessibility fallback in §4 is dead. When in doubt, make the background dimmer.
+
+Panels sit **opaque** on top of the field (`--panel`, no transparency) so the dots run behind them, not through them — that's what makes the panels read as printed objects laid on a dotted sheet.
 
 Ship a light theme too — a white-ground comic panel is the more natural Lichtenstein, and having both proves the theming was designed rather than defaulted. Dark is the default.
 
@@ -176,6 +213,8 @@ The split matters: pop art for the chrome, plain type for the numbers. A page wh
 - [ ] Deuteranopia simulation — all five still distinguishable (via dots, not hue)
 - [ ] No text below 4.5:1 against its own background; forest green and red use their text variants
 - [ ] Contour lines black in both themes
+- [ ] Background halftone reads as texture at arm's length, never as content; data dots still clearly dominant against it
+- [ ] No moiré or shimmer when scrolling fast; check on a non-retina display or at 100% zoom
 - [ ] Light theme present and deliberately stepped, not an inverted dark
 - [ ] Phone width: no horizontal scroll, ring collapsed to a stack
 - [ ] `prefers-reduced-motion` honored — color still changes, transitions don't

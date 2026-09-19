@@ -1,7 +1,14 @@
-import type { HrvBand } from './figureAnchors'
+export const HRV_BANDS = ['high', 'good', 'mid', 'low', 'poor'] as const
+export type HrvBand = (typeof HRV_BANDS)[number]
 
-export { bandForHRV, HRV_BANDS } from './figureAnchors'
-export type { HrvBand } from './figureAnchors'
+/** Anna's bands (STYLE.md §4). Ordered high to low; first match wins. */
+export function bandForHRV(hrv: number): HrvBand {
+  if (hrv >= 130) return 'high'
+  if (hrv >= 110) return 'good'
+  if (hrv >= 90) return 'mid'
+  if (hrv >= 70) return 'low'
+  return 'poor'
+}
 
 export type Theme = 'dark' | 'light'
 
