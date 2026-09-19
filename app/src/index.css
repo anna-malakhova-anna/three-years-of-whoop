@@ -698,6 +698,21 @@ td {
   border-bottom: 1px solid var(--paper-muted);
   color: var(--paper);
 }
+.drift-table td {
+  font-variant-numeric: tabular-nums;
+}
+.drift-table small {
+  color: var(--paper-muted);
+}
+.drift-delta {
+  font-weight: 700;
+}
+.drift-p {
+  color: var(--paper-muted);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
 th {
   color: var(--paper-muted);
   font-weight: 700;

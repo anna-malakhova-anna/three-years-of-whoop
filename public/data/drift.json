@@ -1,0 +1,101 @@
+{
+  "period_a": "2025-08",
+  "period_b": "2026-08",
+  "metrics": [
+    {
+      "key": "hrv",
+      "label": "HRV",
+      "unit": "ms",
+      "a_mean": 110.5,
+      "a_n": 23,
+      "b_mean": 127.5,
+      "b_n": 23,
+      "delta": 17.0,
+      "p": 0.10746196306714484,
+      "cohens_d": 0.48
+    },
+    {
+      "key": "recovery_pct",
+      "label": "Recovery",
+      "unit": "%",
+      "a_mean": 61.8,
+      "a_n": 23,
+      "b_mean": 72.0,
+      "b_n": 23,
+      "delta": 10.2,
+      "p": 0.16494503518892797,
+      "cohens_d": 0.42
+    },
+    {
+      "key": "rhr",
+      "label": "Resting heart rate",
+      "unit": "bpm",
+      "a_mean": 56.6,
+      "a_n": 23,
+      "b_mean": 54.0,
+      "b_n": 23,
+      "delta": -2.6,
+      "p": 0.1360130336278064,
+      "cohens_d": -0.45
+    },
+    {
+      "key": "sleep_hours",
+      "label": "Sleep hours",
+      "unit": "h",
+      "a_mean": 8.0,
+      "a_n": 23,
+      "b_mean": 8.2,
+      "b_n": 23,
+      "delta": 0.2,
+      "p": 0.4517999040645009,
+      "cohens_d": 0.22
+    },
+    {
+      "key": "sleep_consistency_pct",
+      "label": "Sleep consistency",
+      "unit": "%",
+      "a_mean": 67.7,
+      "a_n": 23,
+      "b_mean": 74.2,
+      "b_n": 21,
+      "delta": 6.6,
+      "p": 0.09980402448378835,
+      "cohens_d": 0.51
+    },
+    {
+      "key": "resp_rate",
+      "label": "Respiratory rate",
+      "unit": "rpm",
+      "a_mean": 15.8,
+      "a_n": 23,
+      "b_mean": 15.9,
+      "b_n": 23,
+      "delta": 0.1,
+      "p": 0.5718818507119807,
+      "cohens_d": 0.17
+    },
+    {
+      "key": "day_strain",
+      "label": "Day strain",
+      "unit": "",
+      "a_mean": 10.3,
+      "a_n": 25,
+      "b_mean": 8.4,
+      "b_n": 23,
+      "delta": -1.9,
+      "p": 0.15247160558250078,
+      "cohens_d": -0.42
+    }
+  ],
+  "alcohol": {
+    "a_n_known": 0,
+    "a_n_yes": 0,
+    "b_n_known": 22,
+    "b_n_yes": 7
+  },
+  "notes": [
+    "Same calendar month a year apart, not adjacent months \u2014 controls for season, which HANDOVER.md \u00a75 already flags as too noisy to trust as a general effect in this export.",
+    "n=21\u201325 per metric per month. None of the individual deltas reach p<0.05 at this sample size \u2014 call these suggestive, not established \u2014 but they're directionally consistent (HRV up, recovery up, RHR down, consistency up, strain down) rather than scattered, which is worth more than any single p-value here.",
+    "Alcohol coverage in the earlier month is too thin to compare directly \u2014 see the alcohol block below."
+  ]
+}

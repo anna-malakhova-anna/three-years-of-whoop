@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
+import { DriftPanel } from './components/DriftPanel'
 import { Footer } from './components/Footer'
 import { HeadlineNumber } from './components/HeadlineNumber'
-import { InsufficientData } from './components/InsufficientData'
 import { SignalPanel } from './components/SignalPanel'
 import { Slider } from './components/Slider'
 import { SpeechBubble } from './components/SpeechBubble'
@@ -86,7 +86,7 @@ function Loaded({
   theme: 'dark' | 'light'
   setTheme: (t: 'dark' | 'light') => void
 }) {
-  const { model, alcohol, bins, statements, quality } = data
+  const { model, alcohol, bins, statements, quality, drift } = data
   const { control_defaults } = model
 
   const [controls, setControls] = useState<Controls>({
@@ -226,7 +226,7 @@ function Loaded({
         </p>
       </section>
 
-      <InsufficientData items={statements.insufficient_data} />
+      <DriftPanel drift={drift} />
       <Footer quality={quality} model={model} />
     </div>
   )

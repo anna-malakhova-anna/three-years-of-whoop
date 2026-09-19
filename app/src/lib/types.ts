@@ -149,10 +149,32 @@ export interface StatementsReport {
   model_ceiling: { r_squared: number; n: number }
 }
 
+export interface DriftMetric {
+  key: string
+  label: string
+  unit: string
+  a_mean: number | null
+  a_n: number
+  b_mean: number | null
+  b_n: number
+  delta: number | null
+  p: number | null
+  cohens_d: number | null
+}
+
+export interface DriftReport {
+  period_a: string
+  period_b: string
+  metrics: DriftMetric[]
+  alcohol: { a_n_known: number; a_n_yes: number; b_n_known: number; b_n_yes: number }
+  notes: string[]
+}
+
 export interface PipelineData {
   quality: QualityReport
   model: ModelReport
   alcohol: AlcoholReport
   bins: BinsReport
   statements: StatementsReport
+  drift: DriftReport
 }
