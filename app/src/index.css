@@ -533,10 +533,11 @@ section h2 {
   position: relative;
   display: block;
   width: 100%;
-  min-height: 128px;
   cursor: pointer;
   transform-style: preserve-3d;
-  transition: transform 450ms ease;
+  transition:
+    transform 450ms ease,
+    height 300ms ease;
 }
 .flip-card-inner.flipped {
   transform: rotateY(180deg);
@@ -556,24 +557,34 @@ section h2 {
 }
 
 .flip-card-front {
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 0.3rem;
 }
 .flip-card-front h3 {
   font-size: 0.85rem;
   margin: 0;
-  color: var(--paper);
+  /* Fixed clickable-green, independent of the live HRV band accent (which
+     can be yellow/orange/red) — this is an interaction cue, not a data
+     value, so it stays green regardless of band. */
+  color: #5ccb3e;
   text-align: left;
 }
+:root[data-theme='light'] .flip-card-front h3 {
+  color: #2e7a1a;
+}
 .flip-card-inner:hover .flip-card-front h3 {
-  color: var(--accent-text);
+  text-decoration: underline;
 }
 
 .flip-card-hint {
   font-size: 0.65rem;
-  color: var(--paper-muted);
+  color: #5ccb3e;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   text-align: left;
+}
+:root[data-theme='light'] .flip-card-hint {
+  color: #2e7a1a;
 }
 
 .flip-card-back {
